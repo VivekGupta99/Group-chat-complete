@@ -3,7 +3,9 @@ let chatDiv = document.querySelector('#chatDiv');
 
 let sendBtn = document.querySelector('#sendBtn');
 
-
+setInterval(() => {
+    loadChats()
+}, 1000);
 
 function showMessageDiv(text) {
     let head2 = document.createElement("h2");
@@ -27,6 +29,7 @@ function parseJwt(token) {
 sendBtn.addEventListener('click', sendMsg);
 async function sendMsg(e) {
     let msg = document.querySelector('#footer input').value
+    document.querySelector('#footer input').value = '';
     add_msg_to_db(msg);
 
 }
@@ -60,7 +63,8 @@ async function DisplayPrevChats(chats) {
         let token = localStorage.getItem('token');
         let curruser = parseJwt(token);
 
-        console.log(chats);
+        // console.log(chats);
+        chatDiv.innerHTML = '';
         for (let i = 0; i < chats.length; i++) {
             let newpara = document.createElement('p');
             if (chats[i].userId == curruser.userId) {
