@@ -1,7 +1,10 @@
-window.addEventListener('DOMContentLoaded', loadChats);
 let chatDiv = document.querySelector('#chatDiv');
 
 let sendBtn = document.querySelector('#sendBtn');
+
+window.addEventListener("DOMContentLoaded", (e) => {
+    loadChats();
+});
 
 setInterval(() => {
     loadChats()
