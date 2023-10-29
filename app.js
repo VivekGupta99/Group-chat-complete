@@ -9,7 +9,12 @@ const bodyParser = require("body-parser");
 
 
 app.use(express.json())
-app.use(cors());
+// Full form of CORS => cross origin resourse sharing 
+app.use(
+    cors({
+        origin: process.env.ORIGIN_IP,
+    })
+);
 app.use(userRoute);
 
 (async () => {
